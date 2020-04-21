@@ -151,4 +151,5 @@ export const store = new Vuex.Store({
     loadGame: context => {
       context.commit('loadGame');
     }
-  
+  }
+})
