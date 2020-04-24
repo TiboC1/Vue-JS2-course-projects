@@ -26,18 +26,22 @@ import {mapActions} from 'vuex'
       ...mapActions([
         'buyStocks',
       ]),
+      // function to reset amount in input field to 0
       resetAmount() {
         this.amount = 0
       },
+      // function to handle both buystocks and reset amount functions
       buyHandler(payload) {
+        //check to avoid buying negative amount of stocks
         if (this.amount < 0){
           return false
         } else {
+          //check to prevent buying more stocks than cash available
           if (this.amount * this.stock.price > this.$store.state.player.cash){
             return false
           } else {
             this.buyStocks(payload);
-            this.resetAmount()
+            this.resetAmount();
           }
         }
       }

@@ -24,9 +24,11 @@ export default {
     }
   },
   computed: {
+    // property to show the maximum available amount to sell of that stock
     maxAmount() {
       return this.stock.amount
     },
+    //property to show the sell price, not the original buy price of stock
     correctPrice(){
       return this.displayStock[this.stock.id].price
     },
@@ -41,7 +43,9 @@ export default {
     resetAmount() {
       this.amount = 0
     },
+    //function to handle sell stocks and reset amount functions
     sellHandler(payload) {
+      // check to limit player selling more stocks than owned
       if (this.amount > this.stock.amount){
         return false
       } else {
